@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>SwaggerClient test</title>
+    <script src="https://unpkg.com/swagger-client"></script>
+    <script>
+      new SwaggerClient('http://d0x-vm:3000/v2/swagger.json')
+        .then(
+          client => client.apis.pet.addPet({ id: 1, body: { name: "bobby" } }),
+          reason => console.error('failed to load the spec: ' + reason)
+        )
+        .then(
+          addPetResult => console.log(addPetResult.body),
+          reason => console.error('failed on api call: ' + reason)
+        );
+    </script>
+  </head>
+  <body>
+    check console in browser's dev. tools
+  </body>
+</html>
